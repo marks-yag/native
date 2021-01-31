@@ -1,7 +1,6 @@
 package com.github.yag.native
 
-import java.io.File
-import java.lang.IllegalStateException
+import java.nio.file.Files
 import kotlin.test.Test
 
 class NativeLibraryTest {
@@ -9,8 +8,7 @@ class NativeLibraryTest {
     @Test
     fun test() {
         val path = NativeLibrary.getLibraryPath("fake")
-        val file = File(path)
-        assert(file.isFile)
+        assert(Files.isRegularFile(path))
     }
 
     @Test(expected = UnsatisfiedLinkError::class)
