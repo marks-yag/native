@@ -1,14 +1,14 @@
 package com.github.yag.native
 
-import java.nio.file.Files
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class NativeLibraryTest {
 
     @Test
-    fun test() {
-        val path = NativeLibrary.getLibraryPath("fake")
-        assert(Files.isRegularFile(path))
+    fun testLoadInternal() {
+        val path = NativeLibrary.loadInternal("fake")
+        assertEquals("This is a fake library file.\n", path.readText())
     }
 
     @Test(expected = UnsatisfiedLinkError::class)
