@@ -29,7 +29,7 @@
     <scm>
         <connection>scm:git:git://github.com/marks-yag/native.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/marks-yag/native.git</developerConnection>
-        <url>https://github.com/marks-yag/crypto</url>
+        <url>https://github.com/marks-yag/native</url>
         <tag>HEAD</tag>
     </scm>
 
