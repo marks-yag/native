@@ -21,15 +21,16 @@ object NativeLibrary {
             loader(Paths.get(uri))
         } else {
             val tmpFile = createTempFile()
-            tmpFile.deleteOnExit()
-
-            url.openStream().use { src ->
-                tmpFile.outputStream().use { dest ->
-                    src.copyTo(dest)
+            try {
+                url.openStream().use { src ->
+                    tmpFile.outputStream().use { dest ->
+                        src.copyTo(dest)
+                    }
                 }
+                loader(tmpFile.toPath())
+            } finally {
+                tmpFile.delete()
             }
-            loader(tmpFile.toPath())
-            tmpFile.delete()
         }
 
         return url
